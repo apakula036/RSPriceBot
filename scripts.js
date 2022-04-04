@@ -1,14 +1,14 @@
+//imports
 const axios = require('axios');
 
-
+//constant declarations
 const ranarrSeed = "5295";//ranarr seed 
 const ranarrHerb = "257"; //ranarr herb
 
+//functions 
+ranarrs();
 
-ranarrHerbFunction();
-ranarrSeedFunction();
-
-
+//code block
 function findPriceOfItem(itemID){
     axios.get("https://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item="+ itemID)
     .then((res) => { 
@@ -20,12 +20,16 @@ function findPriceOfItem(itemID){
         console.error('ERR:', err)
     })
 }
+function ranarrs(){
+    ranarrHerbFunction()
+    ranarrSeedFunction()
+}
 function ranarrHerbFunction(){
     axios.get("https://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item="+ 257)
     .then((res) => { 
         var priceOfItem = res.data.item.current.price;
         var newInterger = parseInt(priceOfItem);
-        console.log((newInterger * 7) + "k Is the sell price of 7 herbs.");
+        console.log((newInterger * 7) + "k Is the sell price of 7 herbs, the average harvested.");
         return newInterger;
     })
     .catch((err) => {
