@@ -1,5 +1,6 @@
 //imports
 const axios = require('axios');
+const fs = require('fs');
 
 //constant declarations
 const ranarrSeed = "5295";//ranarr seed 
@@ -24,6 +25,12 @@ function ranarrs(){
     ranarrHerbFunction()
     ranarrSeedFunction()
 }
+function addTextToFile(text){
+    fs.appendFile('prices.txt', text, function (err) {
+    if (err) throw err;
+    console.log('Updated added ' + text + " to the doc.");
+    });
+}
 function ranarrHerbFunction(){
     axios.get("https://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item="+ 257)
     .then((res) => { 
@@ -42,6 +49,7 @@ function ranarrHerbFunction(){
         var newInteger = parseInt(priceOfItem);
 
         console.log(priceOfItem + " is the cost of the seed.");
+        addTextToFile(priceOfItem);
         return newInteger;
     })
     .catch((err) => {
