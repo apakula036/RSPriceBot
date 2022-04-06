@@ -7,7 +7,8 @@ const ranarrSeed = "5295";//ranarr seed
 const ranarrHerb = "257"; //ranarr herb
 
 //functions 
-ranarrs();
+//ranarrs();
+readFile();
 
 //code block
 function findPriceOfItem(itemID){
@@ -24,6 +25,11 @@ function findPriceOfItem(itemID){
 function ranarrs(){
     ranarrHerbFunction()
     ranarrSeedFunction()
+}
+function readFile(){
+    fs.readFile('prices.txt', 'utf8', function(err, data){
+        console.log(data);
+    });
 }
 function addTextToFile(text){
     fs.appendFile('prices.txt', text, function (err) {
