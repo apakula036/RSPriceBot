@@ -7,7 +7,7 @@ const ranarrSeed = "5295";//ranarr seed
 const ranarrHerb = "257"; //ranarr herb
 
 //functions 
-//ranarrs();
+ranarrs();
 readFile();
 
 //code block
@@ -32,9 +32,10 @@ function readFile(){
     });
 }
 function addTextToFile(text){
-    fs.appendFile('prices.txt', text, function (err) {
+    var newInteger = parseInt(text);
+    fs.appendFile('prices.txt',"\n" + newInteger, function (err) {
     if (err) throw err;
-    console.log('Updated added ' + text + " to the doc.");
+    console.log('Updated added ' + newInteger + " to the doc.");
     });
 }
 function ranarrHerbFunction(){
